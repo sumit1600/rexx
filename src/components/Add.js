@@ -1,17 +1,35 @@
-import {Form,Button} from 'react-bootstrap'
+import {Form,Button,Alert} from 'react-bootstrap'
 import {useState} from 'react'
-function Add(){
-
-    const ApiUrl = "http://localhost:3000/data"
-    const [Name,SetName]=useState("")
-    const [Email,SetEmail]=useState("")
-    const [Mobile,SetMobile]=useState("")
-    const [Address,SetAddress]=useState("")
+function Add(prop){
+debugger
+    const ApiUrl = "http://localhost:8000/data"
+    let buttonText = prop.data?"Update":"Add"
+    const [Name,SetName]=useState(prop.data?prop.data.Name:"")
+    const [Email,SetEmail]=useState(prop.data?prop.data.Email:"")
+    const [Mobile,SetMobile]=useState(prop.data?prop.data.Mobile:"")
+    const [Address,SetAddress]=useState(prop.data?prop.data.Address:"")
+    const [AlertBox,SetAlertBox]=useState(false)
 
     function saveData(){
-        console.warn(Name,Email)
+        //console.warn(Name,Email)
         let data={Name,Email,Mobile,Address}
-        fetch(ApiUrl,{
+        if(prop.data){
+            fetch(`${ApiUrl}/${prop.data.id}`,{
+                method:'PUT',
+                headers:{
+                    'Accept':'application/json',
+                    'Content-type':'application/json'
+                },
+                body:JSON.stringify(data)
+            }).then((result)=>{
+            result.json().then((res)=>{
+                console.warn("from Put Method",res)
+                SetAlertBox(true)
+            })
+        })
+        }
+        else {
+            fetch(ApiUrl,{
                 method:'POST',
                 headers:{
                     'Accept':'application/json',
@@ -19,8 +37,10 @@ function Add(){
                 },
                 body:JSON.stringify(data)
             }).then((result)=>{
-            console.warn("result",result)
+            console.warn("result from POST",result)
+            SetAlertBox(true)
         })
+        }
     }
 
     return(
@@ -47,8 +67,15 @@ function Add(){
                 </Form.Group>
                 
                 <Button variant="primary" type="submit" onClick={saveData}>
-                    Submit
+                    {buttonText}
                 </Button>
+                {
+                    AlertBox?
+                        <Alert variant="success" dismissible onClose={() => SetAlertBox(false)}>
+                            <b>Success!!</b> Data has been successfully addded/updated
+                        </Alert>
+                    : " "
+                }
             </Form>
         </div>
     )
