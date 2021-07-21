@@ -1,45 +1,42 @@
 import {Table} from 'react-bootstrap'
-import {useEffect} from 'react'
+import {useEffect,useState} from 'react'
 
 function Home(){
     const ApiUrl = "http://localhost:3000/data"
+    const [tableData,SetTableData]= useState([])
+
     useEffect(()=>{
-        fetch(("http://localhost:3000/data").then((result)=>{
+        fetch(ApiUrl).then((result)=>{
             result.json().then((res)=>{
-                console.warn(res)
+                //console.warn("x",res)
+                SetTableData(res)
             })
-        }),[])
-    })
+        })
+    },[SetTableData])
+
     return(
         <div className="home">
             <h5>All Rexx</h5>
-            <Table striped bordered hover variant="light">
+            <Table striped bordered hover variant="dark" >
                 <thead>
                     <tr>
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Mobile</th>
+                    <th>Address</th>
                     </tr>
-                </thead>
+                </thead>        
                 <tbody>
-                    <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    </tr>
-                    <tr>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    </tr>
-                    <tr>
-                    <td>3</td>
-                    <td colSpan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                    </tr>
+                    {
+                        tableData.map((item)=>
+                        <tr>
+                            <td>{item.Name}</td>
+                            <td>{item.Email}</td>
+                            <td>{item.Mobile}</td>
+                            <td>{item.Address}</td>
+                        </tr> 
+                        )
+                    }  
                 </tbody>
             </Table>
         </div>
