@@ -32,11 +32,6 @@ function Home(){
         })
     }
 
-    function modifyData(item){
-        console.warn(1)
-        return (<Add/>)
-    }
-
     return(
         <div className="home">
             <Router>

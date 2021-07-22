@@ -1,7 +1,7 @@
 import {Form,Button,Alert} from 'react-bootstrap'
 import {useState} from 'react'
 function Add(prop){
-debugger
+
     const ApiUrl = "http://localhost:8000/data"
     let buttonText = prop.data?"Update":"Add"
     const [Name,SetName]=useState(prop.data?prop.data.Name:"")

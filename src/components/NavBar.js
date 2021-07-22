@@ -4,7 +4,7 @@ import {BrowserRouter as Router,Link,Route} from 'react-router-dom'
 import ShowAll from './ShowAll'
 import Add from './Add'
 import Home from './Home'
-import About from './About'
+import Reduxx from './Reduxx'
 import User from './User'
 import Features from './Features'
 
@@ -20,7 +20,7 @@ function NavBar(){
                 <Nav className="me-auto">
                     <Nav.Link as={Link} to={"/Add"}>Add</Nav.Link>
                     <Nav.Link as={Link} to={"/ShowAll"}>Show All</Nav.Link>
-                    <Nav.Link as={Link} to={"/About"}>About</Nav.Link>
+                    <Nav.Link as={Link} to={"/Reduxx"}>Reduxx</Nav.Link>
                     <NavDropdown title="Rex Features" id="collasible-nav-dropdown">
                     <NavDropdown.Item as={Link} to={"/Features"} onClick={()=>SetFeatureType(1)}>Feature: 1</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to={"/Features"} onClick={()=>SetFeatureType(2)}>Feature: 2</NavDropdown.Item>
@@ -43,8 +43,8 @@ function NavBar(){
                     <Route path="/Add">
                         <Add />
                     </Route>
-                    <Route path="/About">
-                        <About />
+                    <Route path="/Reduxx">
+                        <Reduxx />
                     </Route>
                     <Route path="/ShowAll">
                         <ShowAll />
