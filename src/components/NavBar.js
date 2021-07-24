@@ -7,7 +7,7 @@ import Home from './Home'
 import Reduxx from './Reduxx'
 import User from './User'
 import Features from './Features'
-import ApolloClientComponent from './ApolloClientComponent'
+import ApolloC from './ApolloC'
 
 function NavBar(){
     const [FeatureType,SetFeatureType] = useState(1);
@@ -22,7 +22,7 @@ function NavBar(){
                     <Nav.Link as={Link} to={"/Add"}>Add</Nav.Link>
                     <Nav.Link as={Link} to={"/ShowAll"}>Show All</Nav.Link>
                     <Nav.Link as={Link} to={"/Reduxx"}>Reduxx</Nav.Link>
-                    <Nav.Link as={Link} to={"/ApolloClientComponent"}>Apollo Client</Nav.Link>
+                    <Nav.Link as={Link} to={"/ApolloC"}>Apollo Client</Nav.Link>
                     <NavDropdown title="Rex Features" id="collasible-nav-dropdown">
                     <NavDropdown.Item as={Link} to={"/Features"} onClick={()=>SetFeatureType(1)}>Feature: 1</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to={"/Features"} onClick={()=>SetFeatureType(2)}>Feature: 2</NavDropdown.Item>
@@ -51,8 +51,8 @@ function NavBar(){
                     <Route path="/ShowAll">
                         <ShowAll />
                     </Route>
-                    <Route path="/ApolloClientComponent">
-                        <ApolloClientComponent />
+                    <Route path="/ApolloC">
+                        <ApolloC />
                     </Route>
                     <Route path="/User">
                         <User />

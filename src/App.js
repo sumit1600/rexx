@@ -1,12 +1,25 @@
 import './App.css';
 import NavBar from './components/NavBar' 
 import Footer from './components/Footer';
-import ApolloClient from 'apollo-boost'
-import { ApolloProvider} from 'react-apollo'
+import {ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql} from "@apollo/client";
 
 const client = new ApolloClient({
-    uri: "https://countries.trevorblades.com/"
+  uri: 'https://48p1r2roz4.sse.codesandbox.io',
+  cache: new InMemoryCache()
 });
+
+//to check graphQl endpoint returning data or not 
+client
+  .query({
+    query: gql`
+      query GetRates {
+        rates(currency: "USD") {
+          currency
+        }
+      }
+    `
+  })
+  .then(result => console.log(result));
 
 function App() {
   return (
@@ -20,3 +33,5 @@ function App() {
 }
 
 export default App;
+
+
