@@ -1,8 +1,9 @@
-import changeTheNumber from "./upDown";
 import {combineReducers} from 'redux'
+import changeTheNumber from "./upDown";
+import modifyCart from './cartReducer'
 
 const RootReducer = combineReducers({
-    changeTheNumber
+    changeTheNumber, modifyCart
 })
 
 export default RootReducer

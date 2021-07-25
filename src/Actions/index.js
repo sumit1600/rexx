@@ -8,3 +8,13 @@ export const decNumber = () => {
          type: "DECREMENT"
     }
 }
+export const addCart = () => {
+    return{
+         type: "ADDCART"
+    }
+}
+export const removeCart = () => {
+    return{
+         type: "REMOVECART"
+    }
+}
