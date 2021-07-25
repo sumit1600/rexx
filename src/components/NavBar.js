@@ -8,7 +8,8 @@ import Reduxx from './Reduxx'
 import User from './User'
 import Features from './Features'
 import ApolloC from './ApolloC'
-import Cart from './Cart/Cart'
+import Shop from './Shop/Shop'
+import ShopCart from './Shop/ShopCart'
 import Badge from "@material-ui/core/Badge";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import {useSelector} from 'react-redux'
@@ -30,7 +31,7 @@ function NavBar(){
                     <Nav.Link as={Link} to={"/ShowAll"}>Show All</Nav.Link>
                     <Nav.Link as={Link} to={"/Reduxx"}>Reduxx</Nav.Link>
                     <Nav.Link as={Link} to={"/ApolloC"}>Apollo Client</Nav.Link>
-                    <Nav.Link as={Link} to={"/Cart"}>Cart</Nav.Link>
+                    <Nav.Link as={Link} to={"/Shop"}>Shop</Nav.Link>
                     <NavDropdown title="Rex Features" id="collasible-nav-dropdown">
                     <NavDropdown.Item as={Link} to={"/Features"} onClick={()=>SetFeatureType(1)}>Feature: 1</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to={"/Features"} onClick={()=>SetFeatureType(2)}>Feature: 2</NavDropdown.Item>
@@ -41,8 +42,8 @@ function NavBar(){
                 </Nav>
                 <Nav>
                     <Nav.Link as={Link} to={"/User"}>User</Nav.Link>
-                    <Nav.Link as={Link} to={"/User"}>
-                        <Badge color="secondary" badgeContent={cartCount}>
+                    <Nav.Link as={Link} to={"/ShopCart"}>
+                        <Badge color="secondary" badgeContent={cartCount.cartItemList.length}>
                             <ShoppingCartIcon varient="primary" />{" "}
                         </Badge> 
                     </Nav.Link>
@@ -67,11 +68,14 @@ function NavBar(){
                     <Route path="/ApolloC">
                         <ApolloC />
                     </Route>
-                    <Route path="/Cart">
-                        <Cart />
+                    <Route path="/Shop">
+                        <Shop />
                     </Route>
                     <Route path="/User">
                         <User />
+                    </Route>
+                    <Route path="/ShopCart">
+                        <ShopCart />
                     </Route>
                     <Route path="/Features">
                         <Features data={FeatureType}/>

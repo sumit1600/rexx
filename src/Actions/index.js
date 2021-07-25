@@ -8,13 +8,15 @@ export const decNumber = () => {
          type: "DECREMENT"
     }
 }
-export const addCart = () => {
+export const addCart = (props) => {
     return{
-         type: "ADDCART"
+         type: "ADDCART",
+         data: props
     }
 }
-export const removeCart = () => {
+export const removeCart = (props) => {
     return{
-         type: "REMOVECART"
+         type: "REMOVECART",
+         data: props
     }
 }

@@ -44,7 +44,7 @@ function Add(prop){
     }
 
     return(
-        <div>
+        <div style={{ textAlign:"-webkit-center" }}>
             <Form onSubmit={(e)=>e.preventDefault()} style={{width:'400px'}} >
                 <Form.Group className="mb-3" controlId="formBasicName">
                     <Form.Label>Name</Form.Label>
@@ -69,6 +69,7 @@ function Add(prop){
                 <Button variant="primary" type="submit" onClick={saveData}>
                     {buttonText}
                 </Button>
+                <br/><br/>
                 {
                     AlertBox?
                         <Alert variant="success" dismissible onClose={() => SetAlertBox(false)}>

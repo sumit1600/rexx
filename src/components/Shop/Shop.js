@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react'
-import CartItems from './CartItems'
+import ShopItems from './ShopItems'
 
-const Cart = () => {
+const Shop = () => {
     const ApiUrl = "http://localhost:8000/cart"
     const [data,SetData]= useState([])
 
@@ -19,13 +19,14 @@ const Cart = () => {
     
     return (
         <div>
+            <h3>Welcome to the Rexx Shop</h3>
             {
                 data.map((item)=>{
-                   return <CartItems data={item}/>
+                   return <ShopItems data={item}/>
                 })
             }
         </div>
     )
 }
 
-export default Cart
+export default Shop
